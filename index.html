@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="round_result"></p>
+    <p id="finalUserScore"></p>
+    <p id="finalCompScore"></p>
+    <p id="who_won"></p>
+    <button id="start_again">play_again</button>
+
+    <script>
+
+
+        function getComputerChoice() {
+
+
+            let computerchoice = Math.random();
+
+            if (computerchoice <= 0.3) {
+                return "rock";
+            }
+            else if (computerchoice <= 0.6) {
+                return "paper";
+            }
+            else {
+                return "scissor";
+            }
+
+        }
+
+
+
+
+        function getuserchoice() {
+
+            let userchoice = (prompt("enter choice"));
+            return userchoice;
+
+        }
+
+
+
+
+        function getround() {
+
+            let userscore = 0;
+            let computerscore = 0;
+            let x = 0;
+            let y = 0;
+
+
+            for (let i = 1; i < 6; i++) {
+
+
+                let choiceOfComputer = getComputerChoice();
+                let choiceOfUser = getuserchoice();
+
+
+                if (choiceOfComputer == choiceOfUser) {
+                    alert((("draw")));
+
+                }
+                else if (choiceOfComputer == "rock" && choiceOfUser == "paper") {
+                    alert( ((userscore += 1)) + " user score ");
+
+                }
+                else if (choiceOfComputer == "paper" && choiceOfUser == "scissor") {
+                    alert(((userscore += 1)) + " user score ");
+
+                }
+                else if (choiceOfComputer == "scissor" && choiceOfUser == "rock") {
+                    alert(((userscore += 1)) + "user_score");
+
+                }
+                else {
+                    alert(((computerscore += 1)) + " computer score");
+
+                }
+
+
+            }
+
+
+
+            document.getElementById("finalCompScore").innerHTML = ("final_computerscore is  " + computerscore);
+            document.getElementById("finalUserScore").innerHTML = ("final_userscore is  " + userscore);
+
+
+
+            if (computerscore == userscore) {
+                return document.getElementById("who_won").innerHTML = ("its a draw");
+            }
+            else if (computerscore < userscore) {
+                return document.getElementById("who_won").innerHTML = ("user_won");
+            }
+            else {
+                return document.getElementById("who_won").innerHTML = ("computer_won");
+            }
+
+
+        }
+
+
+        getround();
+
+
+        const btn = document.getElementById("start_again");
+
+        btn.addEventListener("click", () => {
+
+            getround()
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
